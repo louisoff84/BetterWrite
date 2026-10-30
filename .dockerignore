@@ -2,6 +2,8 @@
 .github
 **/node_modules
 backend/data
+data
+*.sqlite
 backend/.env
 .env
 *.log
