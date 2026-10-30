@@ -39,4 +39,5 @@
   $("#refreshBooks")?.addEventListener("click",e=>{e.preventDefault();loadBooks();});
   $("#year").textContent=new Date().getFullYear();
   loadBooks();
+  if(location.hash==="#login" || location.hash==="#register") modal(location.hash.slice(1));
 })();
