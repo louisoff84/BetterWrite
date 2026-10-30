@@ -109,7 +109,7 @@ sudo cp deploy/nginx.conf /etc/nginx/sites-available/betterwrite
 sudo nano /etc/nginx/sites-available/betterwrite
 ```
 
-Active le site. Pour obtenir le certificat, crée d'abord une configuration HTTP temporaire ou commente provisoirement les lignes `ssl_certificate` et le bloc HTTPS, puis exécute Certbot :
+Active le site : le fichier fourni est volontairement en HTTP uniquement pour permettre à Certbot de créer le certificat et le bloc HTTPS automatiquement.
 
 ```bash
 sudo ln -s /etc/nginx/sites-available/betterwrite /etc/nginx/sites-enabled/betterwrite
