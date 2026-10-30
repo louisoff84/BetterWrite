@@ -19,6 +19,7 @@ const PORT=Number(process.env.PORT||3000);
 const JWT_SECRET=process.env.JWT_SECRET;
 if(!JWT_SECRET||JWT_SECRET.length<32){console.error("JWT_SECRET doit contenir au moins 32 caractères.");process.exit(1);}
 app.disable("x-powered-by");
+app.set("trust proxy",1);
 app.use(helmet({crossOriginResourcePolicy:{policy:"cross-origin"}}));
 const origins=(process.env.FRONTEND_ORIGIN||"").split(",").map(x=>x.trim()).filter(Boolean);
 if(origins.length) app.use(cors({origin(origin,cb){if(!origin||origins.includes("*")||origins.includes(origin))return cb(null,true);return cb(new Error("Origine CORS non autorisée"));},credentials:false}));
@@ -78,7 +79,7 @@ app.post("/api/import/google/document",auth,async(req,res,next)=>{try{const {tic
 
 // Le même processus sert le frontend et l'API. Le répertoire backend reste inaccessible en HTTP.
 const SITE_DIR=path.resolve(__dirname,"..");
-app.use("/backend",(req,res)=>res.status(404).send("Not found"));
+app.use(["/backend","/data"],(req,res)=>res.status(404).send("Not found"));
 app.use(express.static(SITE_DIR,{index:false,dotfiles:"deny",etag:true,maxAge:process.env.NODE_ENV==="production"?"1h":0}));
 app.get("/",(req,res)=>res.sendFile(path.join(SITE_DIR,"index.html")));
 
