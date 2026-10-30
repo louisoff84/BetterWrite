@@ -1,1 +1,1 @@
-window.BETTERWRITE_CONFIG = { API_URL: "https://mon-backend.exemple.com" };
+window.BETTERWRITE_CONFIG = { API_URL: "back-write.craftpick.fr"};
