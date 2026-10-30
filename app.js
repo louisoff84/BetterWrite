@@ -37,7 +37,7 @@
   $("#themeToggle")?.addEventListener("click",()=>{document.body.classList.toggle("dark");localStorage.setItem("bw_theme",document.body.classList.contains("dark")?"dark":"light");});
   if(localStorage.getItem("bw_theme")==="dark")document.body.classList.add("dark");
   $("#refreshBooks")?.addEventListener("click",e=>{e.preventDefault();loadBooks();});
-  $("#year").textContent=new Date().getFullYear();
+  if($("#year")) $("#year").textContent=new Date().getFullYear();
   loadBooks();
   if(location.hash==="#login" || location.hash==="#register") modal(location.hash.slice(1));
 })();
