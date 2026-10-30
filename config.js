@@ -1,0 +1,1 @@
+window.BETTERWRITE_CONFIG = { API_URL: "https://mon-backend.exemple.com" };
